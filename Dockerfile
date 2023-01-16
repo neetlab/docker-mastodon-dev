@@ -12,6 +12,10 @@ COPY . /mastodon/
 RUN apt-get update \
  && apt-get install -y \
 	git \
+	build-essential \
+	imagemagick \
+	ffmpeg \
+	file \
  	libicu-dev \
 	libidn11-dev \
 	ubuntu-dev-tools \
