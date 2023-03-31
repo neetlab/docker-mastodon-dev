@@ -3,11 +3,11 @@ FROM ruby:3.0.5-slim
 WORKDIR /mastodon
 
 ENV RAILS_ENV="development" \
-    NODE_ENV="development" \
-	RAILS_SERVE_STATIC_FILES="true" \
-    BIND="0.0.0.0"
+  NODE_ENV="development" \
+  RAILS_SERVE_STATIC_FILES="true" \
+  BIND="0.0.0.0"
 
-COPY . /mastodon/
+COPY ./mastodon /mastodon/
 
 RUN apt-get update \
  && apt-get install -y \
@@ -16,7 +16,7 @@ RUN apt-get update \
 	imagemagick \
 	ffmpeg \
 	file \
- 	libicu-dev \
+	libicu-dev \
 	libidn11-dev \
 	ubuntu-dev-tools \
 	libpq-dev \
@@ -33,5 +33,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
 RUN npm install --global yarn
 RUN yarn install --forzen-lockfile
 RUN bundle exec rails assets:precompile
+
+COPY --chmod=755 ./seed.js /mastodon/
 
 EXPOSE 3000 4000

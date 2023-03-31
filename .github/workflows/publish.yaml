@@ -35,6 +35,6 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: ./mastodon
+          context: .
           push: true
           tags: neetshin/mastodon-dev:latest

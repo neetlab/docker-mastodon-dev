@@ -1,2 +1,2 @@
 #!/bin/sh
-docker build -t neetshin/mastodon-dev:latest -f ./Dockerfile ./mastodon
+docker build -t neetshin/mastodon-dev:latest -f ./Dockerfile .
