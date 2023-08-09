@@ -18,7 +18,7 @@ jobs:
           repository: mastodon/mastodon
           path: ./mastodon
           fetch-depth: 1
-          ref: "v4.1.0"
+          ref: "v4.1.6"
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2

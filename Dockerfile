@@ -34,6 +34,4 @@ RUN npm install --global yarn
 RUN yarn install --forzen-lockfile
 RUN bundle exec rails assets:precompile
 
-COPY --chmod=755 ./seed.js /mastodon/
-
 EXPOSE 3000 4000
