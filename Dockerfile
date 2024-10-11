@@ -54,8 +54,7 @@ RUN bundle config git.allow_insecure true \
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
  && apt-get install -y nodejs
 
-RUN corepack enable \
- && corepack prepare \
+RUN corepack enable yarn \
  && yarn install --immutable
 
 RUN bundle exec rails assets:precompile
