@@ -6,6 +6,9 @@ on:
     branches:
       - "main"
 
+env:
+  MASTODON_VERSION: "4.2.13"
+
 # Borrowed from
 # https://github.com/docker/build-push-action
 jobs:
@@ -18,7 +21,7 @@ jobs:
           repository: mastodon/mastodon
           path: ./mastodon
           fetch-depth: 1
-          ref: "v4.2.7"
+          ref: v${{ env.MASTODON_VERSION }}
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -37,4 +40,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: neetshin/mastodon-dev:latest
+          tags: neetshin/mastodon-dev:${{ env.MASTODON_VERSION }}
