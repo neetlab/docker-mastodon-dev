@@ -26,7 +26,8 @@ jobs:
       - name: Apply patches
         working-directory: mastodon
         run: |
-          git apply ../patches/support_password.patch
+          git apply ../patches/add_password_grant_flow.patch
+          git apply ../patches/remove_require_client_credentials.patch
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
