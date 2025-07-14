@@ -22,6 +22,11 @@ jobs:
           path: ./mastodon
           fetch-depth: 1
           ref: v${{ env.MASTODON_VERSION }}
+      
+      - name: Apply patches
+        working-directory: mastodon
+        run: |
+          git apply ../patches/support_password.patch
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
