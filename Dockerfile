@@ -39,6 +39,8 @@ RUN apt-get update \
     ffmpeg \
     file \
     libpq-dev \
+    libvips \
+    libvips-dev \
     # dev tools
     rbenv \
     # ruby-build \
