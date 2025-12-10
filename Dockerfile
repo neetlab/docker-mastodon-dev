@@ -11,6 +11,7 @@ ENV \
   PATH=/root/.rbenv/shims:/root/.rbenv/bin:/usr/local/sbin::$PATH
 
 COPY ./mastodon /mastodon/
+COPY ./mastodon/.env.development /mastodon/.env.development
 
 RUN apt-get update \
  && apt-get install -y \
@@ -53,12 +54,15 @@ RUN bundle config git.allow_insecure true \
  && bundle install
 
 # https://github.com/nodesource/distributions/blob/master/README.md
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+RUN curl -fsSL https://deb.nodesource.com/setup_current.x | bash - \
  && apt-get install -y nodejs
 
-RUN corepack enable yarn \
- && yarn workspaces focus --production @mastodon/mastodon
+RUN npm i -g corepack \
+ && corepack enable \
+ && corepack prepare --activate \
+ && yarn install
 
-RUN bundle exec rails assets:precompile
+# Skip assets precompile for API-only usage
+# RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile
 
 EXPOSE 3000 4000

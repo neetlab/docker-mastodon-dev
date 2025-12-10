@@ -7,7 +7,7 @@ on:
       - "main"
 
 env:
-  MASTODON_VERSION: "4.5.2"
+  MASTODON_VERSION: "4.5.3"
 
 # Borrowed from
 # https://github.com/docker/build-push-action
@@ -47,3 +47,4 @@ jobs:
           context: .
           push: true
           tags: neetshin/mastodon-dev:${{ env.MASTODON_VERSION }}
+          no-cache: true
