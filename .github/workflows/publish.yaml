@@ -7,8 +7,7 @@ on:
       - "main"
 
 env:
-  MASTODON_VERSION: "nightly"
-  MASTODON_REF: "main"
+  MASTODON_VERSION: "4.5.9"
 
 # Borrowed from
 # https://github.com/docker/build-push-action
@@ -22,7 +21,7 @@ jobs:
           repository: mastodon/mastodon
           path: ./mastodon
           fetch-depth: 1
-          ref: ${{ env.MASTODON_REF }}
+          ref: v${{ env.MASTODON_VERSION }}
       
       - name: Apply patches
         working-directory: mastodon
