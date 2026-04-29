@@ -7,7 +7,7 @@ on:
       - "main"
 
 env:
-  MASTODON_VERSION: "4.5.3"
+  MASTODON_VERSION: "4.5.9"
 
 # Borrowed from
 # https://github.com/docker/build-push-action
